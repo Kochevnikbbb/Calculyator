@@ -9,12 +9,13 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     private TextView tvResult;
-    private Float mValueOne, mValueTwo;
-    private Boolean crunchifyAddition, mSubtract, crunchifyMultiplication, crunchifyDivision;
+    private Double firstVal, secondVal;
+    private String operation;
+    private boolean /*crunchifyAddition, mSubtract, crunchifyMultiplication, crunchifyDivision,*/ isClickOperation = false;
 
-    private Button button0, button1, button2, button3, button4, button5, button6,
+/*    private Button button0, button1, button2, button3, button4, button5, button6,
             button7, button8, button9, buttonPlus, buttonMinus, buttonDivide,
-            buttonMul, buttonTochka, buttonC, buttonEqual;
+            buttonMul, buttonTochka, buttonC, buttonEqual;*/
 
 
     @Override
@@ -23,7 +24,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         tvResult = findViewById(R.id.result);
-        button0 = findViewById(R.id.zero);
+
+    }
+/*        button0 = findViewById(R.id.zero);
         button1 = findViewById(R.id.one);
         button2 = findViewById(R.id.two);
         button3 = findViewById(R.id.three);
@@ -97,45 +100,45 @@ public class MainActivity extends AppCompatActivity {
             if (tvResult == null) {
                 tvResult.setText("");
             } else {
-                mValueOne = Float.parseFloat(tvResult.getText() + "");
+                firstVal = Integer.parseInt(tvResult.getText() + "");
                 crunchifyAddition = true;
                 tvResult.setText(null);
             }
             buttonMinus.setOnClickListener(view1 -> {
-                mValueOne = Float.parseFloat(tvResult.getText() + "");
+                firstVal = Integer.parseInt(tvResult.getText() + "");
                 mSubtract = true;
                 tvResult.setText(null);
             });
             buttonMul.setOnClickListener(view1 -> {
-                mValueOne = Float.parseFloat(tvResult.getText() + "");
+                firstVal = Integer.parseInt(tvResult.getText() + "");
                 crunchifyMultiplication = true;
                 tvResult.setText(null);
             });
             buttonDivide.setOnClickListener(view1 -> {
-                mValueOne = Float.parseFloat(tvResult.getText() + "");
+                firstVal = Integer.parseInt(tvResult.getText() + "");
                 crunchifyMultiplication = true;
                 tvResult.setText(null);
             });
             buttonEqual.setOnClickListener(view1 -> {
-                mValueTwo = Float.parseFloat(tvResult.getText() + "");
+                secondVal = Integer.parseInt(tvResult.getText() + "");
 
                 if (crunchifyAddition == true) {
-                    tvResult.setText(mValueOne + mValueTwo + "");
+                    tvResult.setText(firstVal + secondVal + "");
                     crunchifyAddition = false;
                 }
 
                 if (mSubtract == true) {
-                    tvResult.setText(mValueOne - mValueTwo + "");
+                    tvResult.setText(firstVal - secondVal);
                     mSubtract = false;
                 }
 
                 if (crunchifyMultiplication == true) {
-                    tvResult.setText(mValueOne * mValueTwo + "");
+                    tvResult.setText(+firstVal * secondVal + "");
                     crunchifyMultiplication = false;
                 }
 
                 if (crunchifyDivision == true) {
-                    tvResult.setText(mValueOne / mValueTwo + "");
+                    tvResult.setText(firstVal / secondVal + "");
                     crunchifyDivision = false;
                 }
             });
@@ -153,143 +156,126 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickNumber(View view) {
-    }
+    }*/
 
 
-    /*    public void onClickNumber(View view) {
-     *//*        double[] numbers ={R.id.one,R.id.two,R.id.three,R.id.four,R.id.five,R.id.six,R.id.seven,R.id.eight,R.id.nine,R.id.zero,R.id.tochka,R.id.negative_number};
-        double x = 0;
-
-        for (double i:numbers){
-            x++;
-            Button b=findViewById(numbers[i]);
-            switch (view.getId()){
-                case numbers[i]:
-                    if (result.getText().toString().equals("0")){
-                        result.setText("x");
-                    }else{
-                        result.append("x");
-                    }
-                    break;
-            }
-        }*//*
-
+    public void onClickNumber(View view) {
         switch (view.getId()) {
             case R.id.one:
-                if (result.getText().toString().equals("0")) {
-                    result.setText("1");
+                if (tvResult.getText().toString().equals("0")) {
+                    tvResult.setText("1");
                 } else {
-                    result.append("1");
+                    tvResult.append("1");
                 }
                 if (isClickOperation) {
-                    result.setText("1");
+                    tvResult.setText("1");
                 }
                 break;
             case R.id.two:
-                if (result.getText().toString().equals("0")) {
-                    result.setText("2");
+                if (tvResult.getText().toString().equals("0")) {
+                    tvResult.setText("2");
                 } else {
-                    result.append("2");
+                    tvResult.append("2");
                 }
                 if (isClickOperation) {
-                    result.setText("2");
+                    tvResult.setText("2");
                 }
                 break;
             case R.id.three:
-                if (result.getText().toString().equals("0")) {
-                    result.setText("3");
+                if (tvResult.getText().toString().equals("0")) {
+                    tvResult.setText("3");
                 } else {
-                    result.append("3");
+                    tvResult.append("3");
                 }
                 if (isClickOperation) {
-                    result.setText("3");
+                    tvResult.setText("3");
                 }
                 break;
             case R.id.four:
-                if (result.getText().toString().equals("0")) {
-                    result.setText("4");
+                if (tvResult.getText().toString().equals("0")) {
+                    tvResult.setText("4");
                 } else {
-                    result.append("4");
+                    tvResult.append("4");
                 }
                 if (isClickOperation) {
-                    result.setText("4");
+                    tvResult.setText("4");
                 }
                 break;
             case R.id.five:
-                if (result.getText().toString().equals("0")) {
-                    result.setText("5");
+                if (tvResult.getText().toString().equals("0")) {
+                    tvResult.setText("5");
                 } else {
-                    result.append("5");
+                    tvResult.append("5");
                 }
                 if (isClickOperation) {
-                    result.setText("5");
+                    tvResult.setText("5");
                 }
                 break;
             case R.id.six:
-                if (result.getText().toString().equals("0")) {
-                    result.setText("6");
+                if (tvResult.getText().toString().equals("0")) {
+                    tvResult.setText("6");
                 } else {
-                    result.append("6");
+                    tvResult.append("6");
                 }
                 if (isClickOperation) {
-                    result.setText("6");
+                    tvResult.setText("6");
                 }
                 break;
             case R.id.seven:
-                if (result.getText().toString().equals("0")) {
-                    result.setText("7");
+                if (tvResult.getText().toString().equals("0")) {
+                    tvResult.setText("7");
                 } else {
-                    result.append("7");
+                    tvResult.append("7");
                 }
                 if (isClickOperation) {
-                    result.setText("7");
+                    tvResult.setText("7");
                 }
                 break;
             case R.id.eight:
-                if (result.getText().toString().equals("0")) {
-                    result.setText("8");
+                if (tvResult.getText().toString().equals("0")) {
+                    tvResult.setText("8");
                 } else {
-                    result.append("8");
+                    tvResult.append("8");
                 }
                 if (isClickOperation) {
-                    result.setText("8");
+                    tvResult.setText("8");
                 }
                 break;
             case R.id.nine:
-                if (result.getText().toString().equals("0")) {
-                    result.setText("9");
+                if (tvResult.getText().toString().equals("0")) {
+                    tvResult.setText("9");
                 } else {
-                    result.append("9");
+                    tvResult.append("9");
                 }
                 if (isClickOperation) {
-                    result.setText("9");
+                    tvResult.setText("9");
                 }
                 break;
             case R.id.zero:
-                if (result.getText().toString().equals("0")) {
-                    result.setText("0");
+                if (tvResult.getText().toString().equals("0")) {
+                    tvResult.setText("0");
                 } else {
-                    result.append("0");
+                    tvResult.append("0");
                 }
                 if (isClickOperation) {
-                    result.setText("0");
+                    tvResult.setText("0");
                 }
                 break;
             case R.id.negative_number:
-                if (result.getText().toString().equals("0")) {
-                    result.setText("-");
+                if (tvResult.getText().toString().equals("0")) {
+                    tvResult.setText("-");
                 } else {
-                    result.append("-");
+                    tvResult.append("-");
                 }
                 if (isClickOperation) {
-                    result.setText("-");
+                    tvResult.setText("-");
                 }
                 break;
             case R.id.tochka:
-                if (result.getText().toString().equals("0")) {
-                    result.setText(".");
+                if (tvResult.getText().toString().equals("0")) {
+                    tvResult.setText(".");
                 } else {
-                    result.append(".");
+                    tvResult.append(".");
                 }
         }
         isClickOperation = false;
@@ -298,49 +284,54 @@ public class MainActivity extends AppCompatActivity {
     public void onClickOperation(View view) {
         switch (view.getId()) {
             case R.id.plus:
-                first = Integer.parseInt(result.getText().toString());
+                firstVal = Double.parseDouble(tvResult.getText().toString());
                 operation = "+";
                 isClickOperation = true;
                 break;
             case R.id.minus:
-                first = Integer.parseInt(result.getText().toString());
+                firstVal = Double.parseDouble(tvResult.getText().toString());
                 operation = "-";
                 isClickOperation = true;
                 break;
             case R.id.multiply:
-                first = Integer.parseInt(result.getText().toString());
+                firstVal = Double.parseDouble(tvResult.getText().toString());
                 operation = "*";
                 isClickOperation = true;
                 break;
             case R.id.divide:
-                first = Integer.parseInt(result.getText().toString());
+                firstVal = Double.parseDouble(tvResult.getText().toString());
                 operation = "/";
                 isClickOperation = true;
                 break;
             case R.id.clean:
-                result.setText("0");
+                tvResult.setText("0");
                 break;
-            case R.id.equals:
 
-                second = Integer.parseInt(result.getText().toString());
-                Integer res = 0;
+
+            case R.id.equals:
+                secondVal = Double.parseDouble(tvResult.getText().toString());
+                Double res = 0.0;
 
                 switch (operation) {
                     case "+":
-                        res = first + second;
+                        res = firstVal + secondVal;
+                        break;
                     case "*":
-                        res = first * second;
+                        res = firstVal * secondVal;
+                        break;
                     case "/":
-                        res = first / second;
+                        res = firstVal / secondVal;
+                        break;
                     case "-":
-                        res = first - second;
+                        res = firstVal - secondVal;
+                        break;
                 }
-                result.setText(res.toString());
+                tvResult.setText(res.toString());
                 isClickOperation = true;
                 break;
 
         }
 
-    }*/
+    }
 
 }
