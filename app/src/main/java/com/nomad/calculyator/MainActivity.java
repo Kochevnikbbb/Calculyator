@@ -2,14 +2,17 @@ package com.nomad.calculyator;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
+
 public class MainActivity extends AppCompatActivity {
     private TextView tvResult;
-    private Double firstVal, secondVal;
+    private Double firstVal = Double.NaN, secondVal;
     private String operation;
     private boolean /*crunchifyAddition, mSubtract, crunchifyMultiplication, crunchifyDivision,*/ isClickOperation = false;
 
@@ -310,7 +313,7 @@ public class MainActivity extends AppCompatActivity {
 
             case R.id.equals:
                 secondVal = Double.parseDouble(tvResult.getText().toString());
-                Double res = 0.0;
+                Number res = 0;
 
                 switch (operation) {
                     case "+":
@@ -327,10 +330,18 @@ public class MainActivity extends AppCompatActivity {
                         break;
                 }
                 tvResult.setText(res.toString());
+                //tvResult.setText(new DecimalFormat "##.######").format(res);
                 isClickOperation = true;
                 break;
 
         }
+
+    }
+    public void onPut2Activity(View view) {
+        Intent intent = new Intent(this, MainActivity2.class);
+        String text = tvResult.getText().toString();
+        intent.putExtra("key1",text);
+        startActivity(intent);
 
     }
 
