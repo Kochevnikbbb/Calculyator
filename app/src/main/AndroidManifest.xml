@@ -11,22 +11,20 @@
         android:theme="@style/Theme.Calculyator">
         <activity
             android:name=".SplashScreen"
-            android:theme="@style/splash_screen"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/splash_screen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-
-
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"/>
+        <activity
+            android:name=".MainActivity2"
+            android:exported="false"/>
     </application>
 
 </manifest>

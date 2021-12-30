@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView tvResult;
     private Double firstVal = Double.NaN, secondVal;
     private String operation;
+    private Button btnResult;
     private boolean /*crunchifyAddition, mSubtract, crunchifyMultiplication, crunchifyDivision,*/ isClickOperation = false;
 
 /*    private Button button0, button1, button2, button3, button4, button5, button6,
@@ -25,8 +26,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         tvResult = findViewById(R.id.result);
+
+
 
     }
 /*        button0 = findViewById(R.id.zero);
@@ -163,6 +165,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void onClickNumber(View view) {
+        btnResult = findViewById(R.id.btnResult);
+        btnResult.setVisibility(View.INVISIBLE);
         switch (view.getId()) {
             case R.id.one:
                 if (tvResult.getText().toString().equals("0")) {
@@ -312,6 +316,7 @@ public class MainActivity extends AppCompatActivity {
 
 
             case R.id.equals:
+                btnResult.setVisibility(view.getVisibility());
                 secondVal = Double.parseDouble(tvResult.getText().toString());
                 Number res = 0;
 
@@ -338,7 +343,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void onPut2Activity(View view) {
-        Intent intent = new Intent(this, MainActivity2.class);
+        Intent intent = new Intent(MainActivity.this, MainActivity2.class);
         String text = tvResult.getText().toString();
         intent.putExtra("key1",text);
         startActivity(intent);
